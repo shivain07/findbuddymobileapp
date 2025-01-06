@@ -1,39 +1,58 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
+import { UNPROTECTED_ROUTES } from '@/constants/Ui';
+import { useUserStore } from '@/globalstore/userStore';
+import { Slot, usePathname, useRouter } from 'expo-router';
 import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { TamaguiProvider } from 'tamagui'
+import Toast from 'react-native-toast-message';
+import OverlayLoader from '@/components/modified/Overlayloader';
+import { useLoaderStore } from '@/globalstore/apiLoaderStore';
+import VerifyUserPopup from '@/components/popups/VerifyUserPopup';
+import LoginRequiredPopup from '@/components/popups/LoginRequiredPopup';
+import appConfig from '@/tamagui.config';
+import { useFonts } from 'expo-font';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
+export default function Layout() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { isLoggedin,accessToken ,clearUser,user} = useUserStore();
+  const { isLoading } = useLoaderStore();
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    if(!accessToken){
+      clearUser();
+      router.replace("/login");
     }
-  }, [loaded]);
+    if (!isLoggedin && !UNPROTECTED_ROUTES.includes(pathname)) {
+      router.replace("/login");
+    }
+    else if (isLoggedin && UNPROTECTED_ROUTES.includes(pathname)) {
+      router.replace("/protected/home");
+    }
+  }, [isLoggedin]);
 
-  if (!loaded) {
-    return null;
-  }
+  // const [loaded] = useFonts({
+  //   Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+  //   InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+  // })
+
+  // if (!loaded) {
+  //   return <TamaguiProvider config={appConfig}>
+  //     <SafeAreaView style={{ flex: 1 }}>
+  //       <Slot />
+  //     </SafeAreaView>
+  //   </TamaguiProvider>
+  // }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <TamaguiProvider config={appConfig}>
+        <OverlayLoader isVisible={isLoading} />
+        <VerifyUserPopup /> 
+        <LoginRequiredPopup/>
+        <Slot />
+        <Toast />
+      </TamaguiProvider >
+    </SafeAreaView>
+
   );
 }
