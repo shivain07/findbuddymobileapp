@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+        
+# FindBuddy App
 
-## Get started
+FindBuddy is a mobile app designed to help you connect with people who share similar interests, discover trending topics, and share your thoughts with the community. The app is built using Expo React Native and features a user-friendly interface for seamless navigation.
 
-1. Install dependencies
+## Features
 
+- **Home Feed**: View a personalized feed with posts from your community.
+- **Search Tab**: Stay updated with the latest trends.
+- **Add Post**: Share your thoughts and updates with others.
+
+## Download the App
+
+You can download the FindBuddy app from the Google Play Store:
+
+[Download FindBuddy](https://play.google.com/apps/test/RQIFMYqvAlc/ahAO29uNSifChEaGr_i97UyZdovPY-IntMNG3ZFU8TFUYNw13reAXT8Fl9qb6kvSbVT7-k6jOzT5FA7UjON4iDsU8L)
+
+## Expo Build
+
+For developers or testers, you can access the Expo build of the app here:
+
+[Expo Build](https://expo.dev/accounts/shivain07/projects/findbuddy/builds/2711dcdf-468f-410f-b76e-9954b2cc570d)
+
+## Getting Started with Development
+
+To set up the development environment and start working on the app locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/findbuddy.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd findbuddy
+   ```
+
+3. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+4. Start the development server:
    ```bash
-    npx expo start
+   expo start
    ```
 
-In the output, you'll find options to open the app in a
+5. Scan the QR code using the Expo Go app to view the app on your mobile device.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Contributing
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+We welcome contributions to improve FindBuddy! If you'd like to contribute, please follow these steps:
 
-## Get a fresh project
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add feature description"
+   ```
+4. Push your changes to your forked repository:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request in the main repository.
 
-When you're ready, run:
+## Contact
 
-```bash
-npm run reset-project
-```
+For any questions or feedback, feel free to reach out:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Email: shivaingusain07@gmail.com
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+		
+     
